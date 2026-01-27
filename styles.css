@@ -95,15 +95,27 @@
 
         /* --- PORTADA (HERO) --- */
         .hero {
-            background-color: var(--color-secundario);
+            /* 1. Fondo con "capa oscura" encima de la imagen */
+            /* El primer valor es un color negro semitransparente (0.9 de opacidad) */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)), 
+                            url('images/fachada1.png');
+
+            /* 2. Expansión inteligente de la imagen */
+            background-size: cover;      /* Hace que la imagen cubra todo el espacio sin deformarse */
+            background-position: center; /* Centra la imagen para que se vea lo importante */
+            background-repeat: no-repeat; /* Evita que se repita como mosaico */
+            
+            /* 3. Ajustes de texto */
             text-align: center;
-            padding: 4rem 1rem;
+            padding: 6rem 1rem; /* Aumenté un poco el padding para que se vea más impactante */
+            color: white; /* Fuerza el texto a blanco para que resalte sobre el fondo oscuro */
         }
 
         .hero h1 {
             font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
             margin-bottom: 1rem;
-            color: var(--color-principal);
+            color: white;
         }
 
         .btn {
@@ -165,6 +177,15 @@
             padding: 2rem;
             margin-top: 2rem;
         }
+        /* --- Mapa de Google --- */
+        .mapa{
+        display: flex;  
+        justify-content: center;  
+        align-items: center;
+        margin-top: 1em;    
+        margin-bottom: 1em;
+        box-shadow: 2px 0vw 10px 10px rgba(0, 0, 0, .5);
+        }  
         /* --- REDES SOCIALES (FOOTER) --- */
         .social-links {
             display: flex;
