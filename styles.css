@@ -128,7 +128,7 @@
             margin-top: 1rem;
         }
 
-        /* --- CARRUSEL LATERAL (LO QUE PEDISTE) --- */
+        /* --- CARRUSEL LATERAL (galería de productos) --- */
         .gallery-container {
             /* Habilita el scroll horizontal */
             display: flex;
@@ -144,15 +144,22 @@
         }
 
         .gallery-item {
-            /* Ancho fijo para obligar al scroll */
-            flex: 0 0 80%; /* En celular ocupa el 80% del ancho */
-            scroll-snap-align: center; /* Se centra al soltar */
-            background: #f9f9f9;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
-        }
+    /* --- PROPIEDADES DE POSICIÓN (Estas ya las tenías) --- */
+    flex: 0 0 80%; 
+    scroll-snap-align: center; 
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    
+    /* --- LO NUEVO: TRUCO PARA CENTRAR TODO PERFECTAMENTE --- */
+    display: flex;             /* Activa el modo flexible */
+    flex-direction: column;    /* Ordena los elementos uno debajo de otro (columna) */
+    align-items: center;       /* ESTO es lo que centra la imagen horizontalmente */
+    justify-content: center;   /* Esto ayuda a centrar verticalmente si sobra espacio */
+    text-align: center;        /* Mantiene el texto centrado por si acaso */
+}
+
 
         /* Ajuste para pantallas grandes (PC) */
         @media (min-width: 768px) {

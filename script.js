@@ -6,10 +6,10 @@ const titulos = ['Clasica', 'Vintage', 'Antigua', 'Old School', 'Retro', 'Nostal
 // CÓDIGO PARA GENERAR LOS OTROS 6 PRODUCTOS "RETRO" AUTOMÁTICAMENTE
 // (Esto es un truco para no escribir los 10 a mano ahora mismo, 
 // pero en la vida real borrarías esto y llenarías la lista de arriba)
-for (let i = 1; i <= 10; i++) {
+for (let i = 1; i <= 50; i++) {
     productos.push({
         img: `images/monturas/Montura${i}.png`,
-        titulo: titulos[i - 1],
+        titulo: 'Montura' + i,
         desc: '',
         precio: precios[i - 1]
     });
