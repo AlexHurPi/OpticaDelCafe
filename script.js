@@ -44,7 +44,7 @@ const titulosGafas = ['Solar Clasica', 'Solar Vintage', 'Solar Antigua', 'Solar 
 // pero en la vida real borrarías esto y llenarías la lista de arriba)
 for (let i = 1; i <= 7; i++) {
     gafasSol.push({
-        img: `images/gafasDeSOl/Gafas${i}.png`,
+        img: `images/gafasDeSOl/gafas${i}.png`,
         titulo: titulosGafas[i - 1],
         desc: '',
         precio: preciosGafas[i - 1]
