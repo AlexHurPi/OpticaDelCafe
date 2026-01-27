@@ -58,12 +58,12 @@ gafasSol.forEach(gafa => {
     // Creamos el artículo
     const articulo = document.createElement('article');
     articulo.className = 'gallery-item';
-
+    const htmlDescripcion = gafa.desc ? `<p>${gafa.desc}</p>` : '';
     // Llenamos el contenido HTML usando los datos de la gafa
     articulo.innerHTML = `
         <img src="${gafa.img}" alt="${gafa.titulo}">
         <h3>${gafa.titulo}</h3>
-        <p>${gafa.desc}</p>
+        ${htmlDescripcion}
         <span class="price">${gafa.precio}</span>
     `;
 
