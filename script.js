@@ -1,40 +1,17 @@
 // LISTA DE PRODUCTOS (Aquí puedes agregar o quitar los que quieras)
-const productos = [
-    {
-        img: 'images/Montura1.png',
-        titulo: 'Montura1',
-        desc: '',
-        precio: '$150.000'
-    },
-    {
-        img: 'images/Montura2.png',
-        titulo: 'Montura2',
-        desc: '',
-        precio: '$220.000'
-    },
-    {
-        img: 'images/Montura3.png',
-        titulo: 'Montura3',
-        desc: '',
-        precio: '$180.000'
-    },
-    {
-        img: 'images/Montura4.png',
-        titulo: 'Montura4',
-        desc: '',
-        precio: '$200.000'
-    }
-];
+const productos = [];
+const precios = ['$150.000', '$200.000', '$250.000', '$300.000', '$350.000', '$400.000', '$450.000', '$500.000', '$550.000', '$600.000']
+const titulos = ['Clasica', 'Vintage', 'Antigua', 'Old School', 'Retro', 'Nostalgia', 'Época', 'Pasado', 'Histórica', 'Legendaria']
 
 // CÓDIGO PARA GENERAR LOS OTROS 6 PRODUCTOS "RETRO" AUTOMÁTICAMENTE
 // (Esto es un truco para no escribir los 10 a mano ahora mismo, 
 // pero en la vida real borrarías esto y llenarías la lista de arriba)
-for (let i = 5; i <= 10; i++) {
+for (let i = 1; i <= 10; i++) {
     productos.push({
         img: `images/Montura${i}.png`,
-        titulo: `Montura${i}`,
+        titulo: titulos[i - 1],
         desc: '',
-        precio: '$250.000'
+        precio: precios[i - 1]
     });
 }
 

@@ -1,6 +1,6 @@
  /* --- ESTILOS GENERALES --- */
         :root {
-            --color-principal: #3E679D; /* Azul oscuro */
+            --color-principal: #005391; /* Azul oscuro */
             --color-secundario: #94d2bd; /* Verde menta suave */
             --texto-oscuro: #333;
             --blanco: #ffffff;
@@ -164,4 +164,34 @@
             text-align: center;
             padding: 2rem;
             margin-top: 2rem;
+        }
+        /* --- REDES SOCIALES (FOOTER) --- */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;            /* Espacio entre iconos */
+            margin-bottom: 20px;  /* Espacio antes del copyright */
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;          /* Tamaño del círculo/area clickeable */
+            height: 40px;
+            transition: transform 0.3s ease; /* Animación suave al pasar mouse */
+        }
+
+        .social-links svg {
+            width: 100%;
+            height: 100%;
+            fill: #ffffff;        /* Color blanco para fondo oscuro */
+            transition: fill 0.3s ease;
+        }
+
+        /* Efecto Hover: Se levantan un poco y cambian de color */
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+
+        .social-links a:hover svg {
+            fill: var(--color-secundario); /* Cambian al color menta al pasar el mouse */
         }
