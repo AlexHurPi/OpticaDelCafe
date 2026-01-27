@@ -2,26 +2,26 @@
 const productos = [
     {
         img: 'images/Montura1.png',
-        titulo: 'Modelo Clásico',
-        desc: 'Elegancia para el día a día.',
+        titulo: 'Montura1',
+        desc: '',
         precio: '$150.000'
     },
     {
         img: 'images/Montura2.png',
-        titulo: 'Estilo Urbano',
-        desc: 'Ligereza y resistencia.',
+        titulo: 'Montura2',
+        desc: '',
         precio: '$220.000'
     },
     {
         img: 'images/Montura3.png',
-        titulo: 'Línea Solar',
-        desc: 'Protección UV400 garantizada.',
+        titulo: 'Montura3',
+        desc: '',
         precio: '$180.000'
     },
     {
         img: 'images/Montura4.png',
-        titulo: 'Estilo Aviador',
-        desc: 'El clásico que nunca muere.',
+        titulo: 'Montura4',
+        desc: '',
         precio: '$200.000'
     }
 ];
@@ -32,8 +32,8 @@ const productos = [
 for (let i = 5; i <= 10; i++) {
     productos.push({
         img: `images/Montura${i}.png`,
-        titulo: 'Estilo Retro',
-        desc: 'Un toque vintage para tu look.',
+        titulo: `Montura${i}`,
+        desc: '',
         precio: '$250.000'
     });
 }
