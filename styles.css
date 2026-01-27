@@ -35,25 +35,25 @@
             z-index: 100;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-/* Este contenedor alinea la imagen y el texto horizontalmente */
-.header-logo {
-    display: flex;
-    align-items: center;     /* Centra verticalmente */
-    justify-content: center; /* Centra horizontalmente en la pantalla */
-    gap: 15px;               /* Espacio entre el logo y el texto */
-    margin-bottom: 1rem;     /* Espacio antes del menú */
-}
+        /* Este contenedor alinea la imagen y el texto horizontalmente */
+        .header-logo {
+            display: flex;
+            align-items: center;     /* Centra verticalmente */
+            justify-content: center; /* Centra horizontalmente en la pantalla */
+            gap: 15px;               /* Espacio entre el logo y el texto */
+            margin-bottom: 1rem;     /* Espacio antes del menú */
+        }
 
-/* Controla el tamaño del logo para que no se vea gigante */
-.logo-img {
-    height: 50px; /* Ajusta este valor según el tamaño real de tu logo */
-    width: auto;  /* Mantiene la proporción para no deformarlo */
-}
+        /* Controla el tamaño del logo para que no se vea gigante */
+        .logo-img {
+            height: 50px; /* Ajusta este valor según el tamaño real de tu logo */
+            width: auto;  /* Mantiene la proporción para no deformarlo */
+        }
 
-/* Opcional: Quitar el margen del h2 para que quede bien alineado */
-.header-logo h2 {
-    margin: 0; 
-}
+        /* Opcional: Quitar el margen del h2 para que quede bien alineado */
+        .header-logo h2 {
+            margin: 0; 
+        }
         nav ul {
             list-style: none;
             display: flex;
