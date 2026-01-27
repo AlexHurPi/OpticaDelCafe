@@ -4,164 +4,14 @@
     <meta charset="UTF-8">
     <!-- Esta línea es CRUCIAL para que sea responsiva en celulares -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Óptica del café</title>
-    <style>
-        /* --- ESTILOS GENERALES --- */
-        :root {
-            --color-principal: #005f73; /* Azul petroleo */
-            --color-secundario: #94d2bd; /* Verde menta suave */
-            --texto-oscuro: #333;
-            --blanco: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            line-height: 1.6;
-            color: var(--texto-oscuro);
-        }
-
-        img {
-            max-width: 100%;
-            display: block;
-            border-radius: 8px;
-        }
-
-        /* --- ENCABEZADO (HEADER) --- */
-        header {
-            background-color: var(--color-principal);
-            color: var(--blanco);
-            padding: 1rem;
-            text-align: center;
-            position: sticky; /* Se queda fijo arriba al bajar */
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 10px;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            color: var(--blanco);
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        /* --- SECCIONES COMUNES --- */
-        section {
-            padding: 3rem 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            border-bottom: 1px solid #eee;
-        }
-
-        .section-title {
-            text-align: center;
-            color: var(--color-principal);
-            margin-bottom: 0.5rem;
-            font-size: 2rem;
-            text-transform: uppercase;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: #666;
-            margin-bottom: 2rem;
-            font-style: italic;
-        }
-
-        /* --- PORTADA (HERO) --- */
-        .hero {
-            background-color: var(--color-secundario);
-            text-align: center;
-            padding: 4rem 1rem;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--color-principal);
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--color-principal);
-            color: var(--blanco);
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 1rem;
-        }
-
-        /* --- CARRUSEL LATERAL (LO QUE PEDISTE) --- */
-        .gallery-container {
-            /* Habilita el scroll horizontal */
-            display: flex;
-            overflow-x: auto; 
-            gap: 20px;
-            padding-bottom: 20px;
-            
-            /* Efecto imán para que las fotos se centren solas */
-            scroll-snap-type: x mandatory; 
-            
-            /* Oculta la barra de scroll fea en algunos navegadores */
-            scrollbar-width: thin;
-        }
-
-        .gallery-item {
-            /* Ancho fijo para obligar al scroll */
-            flex: 0 0 80%; /* En celular ocupa el 80% del ancho */
-            scroll-snap-align: center; /* Se centra al soltar */
-            background: #f9f9f9;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        /* Ajuste para pantallas grandes (PC) */
-        @media (min-width: 768px) {
-            .gallery-item {
-                flex: 0 0 30%; /* En PC caben 3 a la vez */
-            }
-        }
-
-        .price {
-            display: block;
-            font-size: 1.2rem;
-            color: var(--color-principal);
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        /* --- CONTACTO / FOOTER --- */
-        footer {
-            background-color: #222;
-            color: #fff;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <title>Óptica del café</title>   
 </head>
 <body>
 
     <!-- Encabezado -->
     <header>
-        <h2>ÓPTICA VISIÓN</h2>
+        <h2>ÓPTICA DEL CAFÉ</h2>
         <nav>
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
@@ -174,7 +24,7 @@
 
     <!-- Sección Inicio -->
     <section id="inicio" class="hero">
-        <h1>Tu visión es nuestra prioridad</h1>
+        <h1>Enamorate de tus ojos</h1>
         <p>Expertos en salud visual y las mejores marcas de monturas.</p>
         <a href="#contacto" class="btn">Agendar Cita</a>
     </section>
@@ -188,7 +38,7 @@
         <div class="gallery-container">
             <!-- Producto 1 -->
             <article class="gallery-item">
-                <img src="https://via.placeholder.com/400x250/005f73/ffffff?text=Montura+Clasica" alt="Gafas Clásicas">
+                <img src="images/Montura1.png" alt="Gafas Clásicas">
                 <h3>Modelo Clásico</h3>
                 <p>Elegancia para el día a día.</p>
                 <span class="price">$150.000</span>
@@ -196,7 +46,7 @@
 
             <!-- Producto 2 -->
             <article class="gallery-item">
-                <img src="https://via.placeholder.com/400x250/94d2bd/333333?text=Montura+Moderna" alt="Gafas Modernas">
+                <img src="images/Montura2.png" alt="Gafas Modernas">
                 <h3>Estilo Urbano</h3>
                 <p>Ligereza y resistencia.</p>
                 <span class="price">$220.000</span>
@@ -204,7 +54,7 @@
 
             <!-- Producto 3 -->
             <article class="gallery-item">
-                <img src="https://via.placeholder.com/400x250/e9d8a6/333333?text=Montura+Sol" alt="Gafas de Sol">
+                <img src="images/Montura3.png" alt="Gafas de Sol">
                 <h3>Línea Solar</h3>
                 <p>Protección UV400 garantizada.</p>
                 <span class="price">$180.000</span>
@@ -212,11 +62,54 @@
 
             <!-- Producto 4 -->
             <article class="gallery-item">
-                <img src="https://via.placeholder.com/400x250/ee9b00/ffffff?text=Montura+Aviador" alt="Gafas Aviador">
+                <img src="images/Montura4.png" alt="Gafas Aviador">
                 <h3>Estilo Aviador</h3>
                 <p>El clásico que nunca muere.</p>
                 <span class="price">$200.000</span>
             </article>
+            <!-- Producto 5 -->
+            <article class="gallery-item">
+                <img src="images/Montura5.png" alt="Gafas Retro">
+                <h3>Estilo Retro</h3>
+                <p>Un toque vintage para tu look.</p>
+                <span class="price">$250.000</span>
+            </article>
+            <!-- Producto 6 -->
+            <article class="gallery-item">
+                <img src="images/Montura6.png" alt="Gafas Retro">
+                <h3>Estilo Retro</h3>
+                <p>Un toque vintage para tu look.</p>
+                <span class="price">$250.000</span>
+            </article>
+            <!-- Producto 7 -->
+            <article class="gallery-item">
+                <img src="images/Montura7.png" alt="Gafas Retro">
+                <h3>Estilo Retro</h3>
+                <p>Un toque vintage para tu look.</p>
+                <span class="price">$250.000</span>
+            </article>
+            <!-- Producto 8 -->
+            <article class="gallery-item">
+                <img src="images/Montura8.png" alt="Gafas Retro">
+                <h3>Estilo Retro</h3>
+                <p>Un toque vintage para tu look.</p>
+                <span class="price">$250.000</span>
+            </article>
+            <!-- Producto 9 -->
+            <article class="gallery-item">
+                <img src="images/Montura9.png" alt="Gafas Retro">
+                <h3>Estilo Retro</h3>
+                <p>Un toque vintage para tu look.</p>
+                <span class="price">$250.000</span>
+            </article>
+            <!-- Producto 10 -->
+            <article class="gallery-item">
+                <img src="images/Montura10.png" alt="Gafas Retro">
+                <h3>Estilo Retro</h3>
+                <p>Un toque vintage para tu look.</p>
+                <span class="price">$250.000</span>
+            </article>
+
         </div>
     </section>
 
