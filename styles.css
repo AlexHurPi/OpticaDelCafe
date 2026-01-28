@@ -122,14 +122,32 @@
         }
 
         .btn {
-            display: inline-block;
+            /* Mantenemos tus estilos base */
+            display: inline-flex; /* CAMBIO IMPORTANTE: inline-flex ayuda a alinear icono y texto */
+            align-items: center;  /* Centra verticalmente icono y texto */
+            justify-content: center;
+            gap: 10px;            /* Espacio entre el icono y el texto */
+            
             background-color: var(--color-principal);
             color: var(--blanco);
             padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
             margin-top: 1rem;
+            font-weight: bold;
+            transition: background 0.3s ease;
         }
+
+        .btn:hover {
+            background-color: #004e60; /* Un tono un poco más oscuro al pasar el mouse */
+        }
+        /* Estilos para el icono SVG */
+        .btn-icon {
+            width: 24px;  /* Aumenté un poco el tamaño para que respire mejor */
+            height: 24px; 
+            fill: currentColor; /* Esto hace que el icono tome el color del texto (blanco) */
+        }
+
 
         /* --- CARRUSEL LATERAL (galería de productos) --- */
         .gallery-container {
