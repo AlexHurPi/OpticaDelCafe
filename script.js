@@ -1,6 +1,6 @@
 // LISTA DE PRODUCTOS (Aquí puedes agregar o quitar los que quieras)
 const productos = [];
-const precios = ['$150.000', '$200.000', '$250.000', '$300.000', '$350.000', '$400.000', '$450.000', '$500.000', '$550.000', '$600.000']
+const precios = ['$110.000', '$120.000', '$130.000', '$300.000', '$350.000', '$400.000', '$450.000', '$500.000', '$550.000', '$600.000']
 const titulos = ['Clasica', 'Vintage', 'Antigua', 'Old School', 'Retro', 'Nostalgia', 'Época', 'Pasado', 'Histórica', 'Legendaria']
 
 // CÓDIGO PARA GENERAR LOS OTROS 6 PRODUCTOS "RETRO" AUTOMÁTICAMENTE
@@ -9,12 +9,12 @@ const titulos = ['Clasica', 'Vintage', 'Antigua', 'Old School', 'Retro', 'Nostal
 for (let i = 1; i <= 50; i++) {
     productos.push({
         img: `images/monturas/Montura${i}.png`,
-        titulo: 'Montura' + i,
+        titulo: 'Montura' + ' ' + i,
         desc: '',
         // AQUÍ ESTÁ EL TRUCO:
         // (i - 1) convierte el contador a base cero (0, 1, 2...)
         // % precios.length hace que cuando llegue a 10, el residuo vuelva a ser 0
-        precio: precios[(i - 1) % precios.length]
+        precio: ''
     });
 }
 
@@ -39,8 +39,8 @@ productos.forEach(producto => {
 });
 
 const gafasSol =[];
-const preciosGafas = ['$180.000', '$220.000', '$270.000', '$320.000', '$370.000', '$420.000', '$470.000', '$520.000', '$570.000', '$620.000']
-const titulosGafas = ['Solar Clasica', 'Solar Vintage', 'Solar Antigua', 'Solar Old School', 'Solar Retro', 'Solar Nostalgia', 'Solar Época', 'Solar Pasado', 'Solar Histórica', 'Solar Legendaria']
+const preciosGafas = ['$930.000', '$930.000', '$980.000', '$990.000', '$1.070.000', '$1.100.000', '$1.100.000', '$520.000', '$570.000', '$620.000']
+const titulosGafas = ['Orklay', 'Orklay', 'Orklay', 'Orklay', 'Ray Ban', 'Ray Ban', 'Ray Ban', 'Solar Pasado', 'Solar Histórica', 'Solar Legendaria']
 
 // CÓDIGO PARA GENERAR LOS OTROS 6 PRODUCTOS "SOLARES" AUTOMÁTICAMENTE
 // (Esto es un truco para no escribir los 10 a mano ahora mismo, 
