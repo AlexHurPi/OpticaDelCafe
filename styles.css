@@ -148,7 +148,17 @@
             fill: currentColor; /* Esto hace que el icono tome el color del texto (blanco) */
         }
 
-
+        .section-servicios {            
+            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3)), 
+                      url('images/Optometria.png');
+            background-size: cover;      /* Hace que la imagen cubra todo el espacio sin deformarse */
+            background-position: center; /* Centra la imagen para que se vea lo importante */
+            background-repeat: no-repeat; /* Evita que se repita como mosaico */
+        }
+        .section-servicios p {
+            background-color: black;
+            color: white;            
+        }
         /* --- CARRUSEL LATERAL (galería de productos) --- */
         .gallery-container {
             /* Habilita el scroll horizontal */
