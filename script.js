@@ -162,3 +162,38 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') cambiarImagen(-1);
     if (e.key === 'Escape') lightbox.classList.remove('active');
 });
+
+/* =========================================
+   FUNCIONALIDAD TÁCTIL (SWIPE) PARA CELULARES
+   ========================================= */
+
+let touchstartX = 0;
+let touchendX = 0;
+
+// 1. Detectamos dónde puso el dedo el usuario
+lightbox.addEventListener('touchstart', (e) => {
+    touchstartX = e.changedTouches[0].screenX;
+}, {passive: true}); // 'passive: true' mejora el rendimiento del scroll
+
+// 2. Detectamos dónde soltó el dedo
+lightbox.addEventListener('touchend', (e) => {
+    touchendX = e.changedTouches[0].screenX;
+    manejarSwipe();
+});
+
+function manejarSwipe() {
+    // Calculamos la distancia del deslizamiento
+    const distancia = touchstartX - touchendX;
+    const umbral = 50; // Mínimo de píxeles para considerar que fue un swipe intencional
+
+    // Si la distancia es mayor al umbral, cambiamos de foto
+    if (Math.abs(distancia) > umbral) {
+        if (distancia > 0) {
+            // Deslizó hacia la izquierda (<-) -> Siguiente foto
+            cambiarImagen(1);
+        } else {
+            // Deslizó hacia la derecha (->) -> Foto anterior
+            cambiarImagen(-1);
+        }
+    }
+}
