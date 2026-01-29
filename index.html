@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <!-- Esta línea es CRUCIAL para que sea responsiva en celulares -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Estilos de PhotoSwipe -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe.min.css">
     <link rel="stylesheet" href="styles.css">
     <title>Óptica del café</title>    
 </head>
@@ -148,6 +150,45 @@
         <img class="lightbox-img" id="lightbox-img" src="" alt="">
         <p class="lightbox-caption" id="lightbox-caption"></p>
     </div>
+    
+<!-- Script de PhotoSwipe -->
+<!-- Carga e Inicialización de PhotoSwipe -->
+<script type="module">
+    import PhotoSwipeLightbox from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe-lightbox.esm.min.js';
+    import PhotoSwipe from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe.esm.min.js';
+
+    // Función global para iniciar una galería
+    window.iniciarGaleria = function(selectorID) {
+        const lightbox = new PhotoSwipeLightbox({
+            gallery: '#' + selectorID,
+            children: 'a', // Cualquier enlace dentro del contenedor
+            pswpModule: PhotoSwipe
+        });
+
+        // Truco para ajustar tamaño de imagen dinámicamente
+        lightbox.on('uiRegister', function() {
+            lightbox.pswp.on('contentLoad', (e) => {
+                const { content } = e;
+                if (content.data.width) return;
+
+                const img = new Image();
+                img.src = content.data.src;
+                img.onload = () => {
+                    content.data.width = img.width;
+                    content.data.height = img.height;
+                    lightbox.pswp.refreshSlideContent(content.index);
+                };
+            });
+        });
+
+        lightbox.init();
+    };
+
+    // Avisamos que la librería ya está lista
+    window.dispatchEvent(new Event('PhotoSwipeReady'));
+</script>
+
+
     <script src="script.js"></script>
 </body>
 </html>

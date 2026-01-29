@@ -1,199 +1,80 @@
 /* =========================================
-   DATOS Y CONFIGURACIÓN
-   ========================================= */
-
-// --- VARIABLES GLOBALES DEL LIGHTBOX ---
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const lightboxCaption = document.getElementById('lightbox-caption');
-const closeBtn = document.querySelector('.close-btn');
-const prevBtn = document.getElementById('prev-btn');
-const nextBtn = document.getElementById('next-btn');
-
-// Estas variables controlarán la navegación
-let indiceActual = 0; 
-let galeriaActual = []; // Aquí guardaremos la lista de fotos que se está viendo (Monturas o Gafas)
-
-/* =========================================
-   SECCIÓN 1: MONTURAS
+   DATOS
    ========================================= */
 const productos = [];
-// Precios y títulos base (puedes editarlos)
-const preciosMonturas = ['$110.000', '$120.000', '$130.000', '$300.000', '$350.000']; 
-
-// Generación automática de 50 monturas
 for (let i = 1; i <= 50; i++) {
     productos.push({
         img: `images/monturas/Montura${i}.png`,
         titulo: 'Montura ' + i,
         desc: '',        
-        precio: '' // Dejo vacío como pediste, o puedes usar preciosMonturas[(i-1)%preciosMonturas.length]
+        precio: ''
     });
 }
 
-// Pintar Monturas
-const contenedorMonturas = document.getElementById('contenedor-monturas');
-
-productos.forEach((producto, index) => {
-    const articulo = document.createElement('article');
-    articulo.className = 'gallery-item';
-
-    articulo.innerHTML = `
-        <img src="${producto.img}" alt="${producto.titulo}" class="img-zoomable">
-        <h3>${producto.titulo}</h3>
-        <p>${producto.desc}</p>
-        <span class="price">${producto.precio}</span>
-    `;
-
-    // Evento Click: Abre el Lightbox usando la lista de MONTURAS
-    const imagen = articulo.querySelector('img');
-    imagen.addEventListener('click', () => {
-        galeriaActual = productos; // ¡Importante! Decimos que estamos viendo monturas
-        indiceActual = index;
-        abrirLightbox();
-    });
-
-    contenedorMonturas.appendChild(articulo);
-});
-
-/* =========================================
-   SECCIÓN 2: GAFAS DE SOL
-   ========================================= */
-const A = 'Oakley';
-const B = 'Ray-Ban';
 const gafasSol = [];
+const A = 'Oakley'; const B = 'Ray-Ban';
 const titulosGafas = [A, A, A, A, B, B, B, A, A, A, A, A, A, A];
-const preciosGafas = ['$930.000', '$930.000', '$980.000']; // Ejemplo
 
-// Generación automática de 14 gafas
 for (let i = 1; i <= 14; i++) {
     gafasSol.push({
         img: `images/gafasDeSol/gafas${i}.png`,
-        titulo: titulosGafas[i - 1] || 'Gafa de Sol', // Usa el título o un genérico si no hay
+        titulo: titulosGafas[i - 1] || 'Gafa de Sol',
         desc: '',
         precio: ''
     });
 }
 
-// Pintar Gafas de Sol
-const contenedorGafas = document.getElementById('contenedor-gafas');
+/* =========================================
+   FUNCIÓN DE PINTADO
+   ========================================= */
+function pintarHTML(lista, contenedorID) {
+    const contenedor = document.getElementById(contenedorID);
+    if (!contenedor) return; // Protección por si no existe el ID
 
-gafasSol.forEach((gafa, index) => {
-    const articulo = document.createElement('article');
-    articulo.className = 'gallery-item';
-    
-    const htmlDescripcion = gafa.desc ? `<p>${gafa.desc}</p>` : '';
+    lista.forEach(item => {
+        const articulo = document.createElement('article');
+        articulo.className = 'gallery-item';
 
-    articulo.innerHTML = `
-        <img src="${gafa.img}" alt="${gafa.titulo}" class="img-zoomable">
-        <h3>${gafa.titulo}</h3>
-        ${htmlDescripcion}
-        <span class="price">${gafa.precio}</span>
-    `;
-
-    // Evento Click: Abre el Lightbox usando la lista de GAFAS DE SOL
-    const imagen = articulo.querySelector('img');
-    imagen.addEventListener('click', () => {
-        galeriaActual = gafasSol; // ¡Importante! Decimos que estamos viendo gafas
-        indiceActual = index;
-        abrirLightbox();
+        // NOTA: Quitamos target="_blank" para evitar que abra pestaña nueva si falla el JS
+        // Ponemos dimensiones iniciales arbitrarias (800x800) para que PhotoSwipe arranque
+        // El script del HTML corregirá el tamaño real después.
+        articulo.innerHTML = `
+            <a href="${item.img}" 
+               data-pswp-width="800" 
+               data-pswp-height="800" 
+               class="pswp-link">
+                <img src="${item.img}" alt="${item.titulo}" class="img-zoomable">
+            </a>
+            <h3>${item.titulo}</h3>
+            <p>${item.desc || ''}</p>
+            <span class="price">${item.precio}</span>
+        `;
+        contenedor.appendChild(articulo);
     });
+}
 
-    contenedorGafas.appendChild(articulo);
-});
+// 1. Pintamos el HTML inmediatamente
+pintarHTML(productos, 'contenedor-monturas');
+pintarHTML(gafasSol, 'contenedor-gafas');
 
 /* =========================================
-   LÓGICA UNIFICADA DEL LIGHTBOX
+   INICIALIZACIÓN SEGURA DE PHOTOSWIPE
    ========================================= */
-
-function abrirLightbox() {
-    lightbox.classList.add('active');
-    actualizarImagen();
-}
-
-function actualizarImagen() {
-    // Usamos 'galeriaActual' para saber qué foto mostrar
-    const item = galeriaActual[indiceActual];
-    
-    lightboxImg.src = item.img;
-    // Muestra Título - Precio (o solo título si no hay precio)
-    const textoPrecio = item.precio ? ` - ${item.precio}` : '';
-    lightboxCaption.textContent = item.titulo + textoPrecio;
-}
-
-function cambiarImagen(direccion) {
-    indiceActual += direccion;
-
-    // Ciclo Infinito: Si se pasa del final, vuelve al inicio
-    if (indiceActual >= galeriaActual.length) {
-        indiceActual = 0;
-    }
-    // Si se va antes del inicio, va al final
-    if (indiceActual < 0) {
-        indiceActual = galeriaActual.length - 1;
-    }
-
-    actualizarImagen();
-}
-
-// --- EVENTOS DE LOS BOTONES ---
-
-// Botones Siguiente / Anterior
-nextBtn.addEventListener('click', () => cambiarImagen(1));
-prevBtn.addEventListener('click', () => cambiarImagen(-1));
-
-// Cerrar con X
-closeBtn.addEventListener('click', () => {
-    lightbox.classList.remove('active');
-});
-
-// Cerrar clickeando fuera
-lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-        lightbox.classList.remove('active');
-    }
-});
-
-// Teclado (Flechas y Escape)
-document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
-    
-    if (e.key === 'ArrowRight') cambiarImagen(1);
-    if (e.key === 'ArrowLeft') cambiarImagen(-1);
-    if (e.key === 'Escape') lightbox.classList.remove('active');
-});
-
-/* =========================================
-   FUNCIONALIDAD TÁCTIL (SWIPE) PARA CELULARES
-   ========================================= */
-
-let touchstartX = 0;
-let touchendX = 0;
-
-// 1. Detectamos dónde puso el dedo el usuario
-lightbox.addEventListener('touchstart', (e) => {
-    touchstartX = e.changedTouches[0].screenX;
-}, {passive: true}); // 'passive: true' mejora el rendimiento del scroll
-
-// 2. Detectamos dónde soltó el dedo
-lightbox.addEventListener('touchend', (e) => {
-    touchendX = e.changedTouches[0].screenX;
-    manejarSwipe();
-});
-
-function manejarSwipe() {
-    // Calculamos la distancia del deslizamiento
-    const distancia = touchstartX - touchendX;
-    const umbral = 50; // Mínimo de píxeles para considerar que fue un swipe intencional
-
-    // Si la distancia es mayor al umbral, cambiamos de foto
-    if (Math.abs(distancia) > umbral) {
-        if (distancia > 0) {
-            // Deslizó hacia la izquierda (<-) -> Siguiente foto
-            cambiarImagen(1);
-        } else {
-            // Deslizó hacia la derecha (->) -> Foto anterior
-            cambiarImagen(-1);
-        }
+// Esta función intenta iniciar las galerías
+function activarLibreria() {
+    if (window.iniciarGaleria) {
+        window.iniciarGaleria('contenedor-monturas');
+        window.iniciarGaleria('contenedor-gafas');
+        console.log("PhotoSwipe iniciado correctamente");
+    } else {
+        // Si la librería aún no carga, esperamos el evento
+        window.addEventListener('PhotoSwipeReady', () => {
+            window.iniciarGaleria('contenedor-monturas');
+            window.iniciarGaleria('contenedor-gafas');
+            console.log("PhotoSwipe iniciado tras espera");
+        });
     }
 }
+
+activarLibreria();
+
