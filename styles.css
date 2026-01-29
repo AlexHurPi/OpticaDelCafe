@@ -313,3 +313,59 @@
         .social-links a:hover svg {
             fill: var(--color-secundario); /* Cambian al color menta al pasar el mouse */
         }
+/* --- ESTILOS DEL LIGHTBOX (Visor) --- */
+        .lightbox {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            z-index: 1000; /* Encima de todo */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9); /* Fondo negro casi opaco */
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        /* Cuando le ponemos la clase 'active', se muestra */
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 80%;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+            animation: zoomIn 0.3s ease; /* Pequeña animación al abrir */
+        }
+
+        .lightbox-caption {
+            color: white;
+            margin-top: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* Botón de cerrar (X) */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-btn:hover {
+            color: var(--color-secundario);
+        }
+
+        /* Animación de zoom */
+        @keyframes zoomIn {
+            from {transform: scale(0.8); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
