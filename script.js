@@ -43,7 +43,9 @@ function pintarHTML(lista, contenedorID) {
                data-pswp-width="800" 
                data-pswp-height="800" 
                class="pswp-link">
-                <img src="${item.img}" alt="${item.titulo}" class="img-zoomable">
+                <img src="${item.img}" 
+     alt="${item.titulo} ${item.precio ? ' - ' + item.precio : ''}" 
+     class="img-zoomable">
             </a>
             <h3>${item.titulo}</h3>
             <p>${item.desc || ''}</p>

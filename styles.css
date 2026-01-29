@@ -323,3 +323,19 @@
     height: auto;
     display: block;
 }
+/* Estilos para el título dentro de PhotoSwipe */
+.pswp-caption-content {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 20px;
+    width: auto;
+    max-width: 90%;
+    pointer-events: none;
+}
