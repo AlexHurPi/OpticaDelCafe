@@ -38,7 +38,7 @@ productos.forEach(producto => {
     contenedor.appendChild(articulo);
 });
 const A='Oakley';
-const B='Ray Ban';
+const B='Ray-Ban';
 const gafasSol =[];
 const preciosGafas = ['$930.000', '$930.000', '$980.000', '$990.000', '$1.070.000', '$1.100.000', '$1.100.000', '$520.000', '$570.000', '$620.000']
 const titulosGafas = [A, A, A, A, B, B, B, A, A, A, A, A, A, A];
