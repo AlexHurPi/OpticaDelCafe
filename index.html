@@ -75,7 +75,7 @@
             </video>
         </div>
     </section>
-<!-- Video gafas de sol dama -->
+<!-- Video gafas de sol Caballeros -->
     <section id="video-promo" class="section-video bg-gris" >
         <h2 class="section-title">Nueva Colección Caballeros</h2>
         <p class="section-subtitle">Elegancia y estilo</p>
@@ -121,7 +121,7 @@
             </svg>
         </a>
     </section>
-
+<!------------- Footer ----------->
     <footer>
             <!-- Redes Sociales -->
     <div class="social-links">
@@ -139,9 +139,19 @@
 
         <p>&copy; 2026 Óptica del café.</p>
     </footer>
-    
-<!-- Carga e Inicialización de PhotoSwipe + Plugin de Títulos -->    
-    <script type="module" src="photoswipe-init.js"></script>
+
+<!-- LIGHTBOX (Visor de imágenes a pantalla completa) -->    
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        
+        <!-- NUEVOS BOTONES DE NAVEGACIÓN -->
+        <button class="nav-btn prev-btn" id="prev-btn">&#10094;</button>
+        <button class="nav-btn next-btn" id="next-btn">&#10095;</button>
+        
+        <img class="lightbox-img" id="lightbox-img" src="" alt="">
+        <p class="lightbox-caption" id="lightbox-caption"></p>
+    </div>    
+
 <!-- Código JavaScript personalizado -->
     <script src="script.js"></script>
 </body>
