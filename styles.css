@@ -159,6 +159,41 @@
             background-color: black;
             color: white;            
         }
+        /* --- SECCIÓN DE VIDEO --- */
+        .section-video {
+            background-color: #fff; /* Fondo limpio */
+            text-align: center;
+        }
+
+        .video-container {
+            /* CAMBIO CLAVE: Reduje el ancho máximo. 
+            400px o 500px es ideal para un video vertical (tipo TikTok/Reel) en PC.
+            Si el video es horizontal (tipo YouTube), usa 600px o 700px. */
+            max-width: 450px;       
+            
+            margin: 0 auto;         
+            padding: 10px;
+            background: #000;       
+            border-radius: 15px;    
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3); 
+            overflow: hidden;       
+        }
+
+        video {
+            width: 100%;            /* Se adapta al ancho del contenedor */
+            height: auto;           /* ¡IMPORTANTE! 'auto' calcula la altura según el video original */
+            display: block;         
+            border-radius: 10px;    
+        }
+
+        /* Ajuste para celulares */
+        @media (max-width: 768px) {
+            .video-container {
+                /* En celular queremos que aproveche más espacio */
+                max-width: 90%; 
+            }
+        }
+
         /* --- CARRUSEL LATERAL (galería de productos) --- */
         .gallery-container {
             /* Habilita el scroll horizontal */

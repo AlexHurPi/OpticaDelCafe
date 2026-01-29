@@ -37,20 +37,21 @@ productos.forEach(producto => {
     // Lo agregamos al contenedor
     contenedor.appendChild(articulo);
 });
-
+const A='Orklay';
+const B='Ray Ban';
 const gafasSol =[];
 const preciosGafas = ['$930.000', '$930.000', '$980.000', '$990.000', '$1.070.000', '$1.100.000', '$1.100.000', '$520.000', '$570.000', '$620.000']
-const titulosGafas = ['Orklay', 'Orklay', 'Orklay', 'Orklay', 'Ray Ban', 'Ray Ban', 'Ray Ban', 'Solar Pasado', 'Solar Histórica', 'Solar Legendaria']
+const titulosGafas = [A, A, A, A, B, B, B, A, A, A, A, A, A, A];
 
 // CÓDIGO PARA GENERAR LOS OTROS 6 PRODUCTOS "SOLARES" AUTOMÁTICAMENTE
 // (Esto es un truco para no escribir los 10 a mano ahora mismo, 
 // pero en la vida real borrarías esto y llenarías la lista de arriba)
-for (let i = 1; i <= 7; i++) {
+for (let i = 1; i <= 14; i++) {
     gafasSol.push({
         img: `images/gafasDeSol/gafas${i}.png`,
         titulo: titulosGafas[i - 1],
         desc: '',
-        precio: preciosGafas[i - 1]
+        precio: ''
     });
 }
 
