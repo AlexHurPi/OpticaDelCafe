@@ -313,29 +313,69 @@
         .social-links a:hover svg {
             fill: var(--color-secundario); /* Cambian al color menta al pasar el mouse */
         }
-/* Asegura que el enlace no tenga estilos raros */
-.pswp-link {
-    display: block;
-    cursor: zoom-in;
-}
-.pswp-link img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-/* Estilos para el título dentro de PhotoSwipe */
-.pswp-caption-content {
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    font-size: 16px;
-    text-align: center;
-    padding: 10px;
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 20px;
-    width: auto;
-    max-width: 90%;
-    pointer-events: none;
-}
+/* --- ESTILOS PARA PHOTOSWIPE --- */        
+        /* Asegura que el enlace no tenga estilos raros */
+        .pswp-link {
+            display: block;
+            cursor: zoom-in;
+        }
+        .pswp-link img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        /* Estilos para el título dentro de PhotoSwipe */
+        .pswp-caption-content {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 16px;
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 20px;
+            width: auto;
+            max-width: 90%;
+            pointer-events: none;
+        }
+        /* Forzar flechas de PhotoSwipe a los bordes de la PANTALLA */
+        .pswp__button--arrow--prev {
+            left: 20px !important; /* Pegado a la izquierda de la pantalla */
+            right: auto !important;
+        }
+
+        .pswp__button--arrow--next {
+            right: 20px !important; /* Pegado a la derecha de la pantalla */
+            left: auto !important;
+        }
+
+        /* Opcional: Asegurar que estén centradas verticalmente */
+        .pswp__button--arrow--prev,
+        .pswp__button--arrow--next {
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            margin-top: 0 !important;
+            position: fixed !important; /* Importante para que sea relativo a la ventana */
+        }
+        /* Forzar la "X" de cerrar a la esquina de la pantalla */
+        .pswp__button--close {
+            position: fixed !important; /* Relativo a la ventana */
+            top: 15px !important;       /* Separación desde arriba */
+            right: 20px !important;     /* Separación desde la derecha */
+            margin: 0 !important;       /* Quitar márgenes raros */
+            z-index: 10500 !important;  /* Asegurar que esté encima de todo */
+            
+            /* Opcional: Hacerla un poquito más grande/visible si quieres */
+            background-color: rgba(0, 0, 0, 0.3) !important; /* Fondo oscurito suave */
+            border-radius: 50%; /* Redonda */
+        }
+        /* Corrección CRÍTICA para que PhotoSwipe funcione bien */
+        .pswp img {
+            max-width: none !important; /* Permite que la imagen crezca libremente */
+            border-radius: 0 !important; /* Quita los bordes redondeados en pantalla completa */
+            height: auto !important; /* Asegura proporción correcta */
+        }
+
+    /* End of styles.css */

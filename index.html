@@ -139,91 +139,10 @@
 
         <p>&copy; 2026 Óptica del café.</p>
     </footer>
-<!-- LIGHTBOX (Visor de imágenes a pantalla completa) -->    
-    <div id="lightbox" class="lightbox">
-        <span class="close-btn">&times;</span>
-        
-        <!-- NUEVOS BOTONES DE NAVEGACIÓN -->
-        <button class="nav-btn prev-btn" id="prev-btn">&#10094;</button>
-        <button class="nav-btn next-btn" id="next-btn">&#10095;</button>
-        
-        <img class="lightbox-img" id="lightbox-img" src="" alt="">
-        <p class="lightbox-caption" id="lightbox-caption"></p>
-    </div>
     
-<!-- Script de PhotoSwipe -->
-<!-- Carga e Inicialización de PhotoSwipe -->
-<!-- Carga e Inicialización de PhotoSwipe + Plugin de Títulos -->
-<script type="module">
-    import PhotoSwipeLightbox from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe-lightbox.esm.min.js';
-    import PhotoSwipe from 'https://cdnjs.cloudflare.com/ajax/libs/photoswipe/5.4.2/photoswipe.esm.min.js';
-
-    window.iniciarGaleria = function(selectorID) {
-        const lightbox = new PhotoSwipeLightbox({
-            gallery: '#' + selectorID,
-            children: 'a.pswp-link',
-            pswpModule: PhotoSwipe,
-            bgOpacity: 0.9,
-            padding: { top: 30, bottom: 30, left: 10, right: 10 } // Un poco de aire para que no pegue a los bordes
-        });
-
-        // 1. SOLUCIÓN TÍTULOS (CAPTION)
-        // Insertamos el título dinámicamente
-        lightbox.on('uiRegister', function() {
-            lightbox.pswp.ui.registerElement({
-                name: 'custom-caption',
-                order: 9,
-                isButton: false,
-                appendTo: 'root',
-                html: 'Caption text',
-                onInit: (el, pswp) => {
-                    lightbox.pswp.on('change', () => {
-                        const currSlideElement = lightbox.pswp.currSlide.data.element;
-                        let captionText = '';
-                        if (currSlideElement) {
-                            // Buscamos la imagen dentro del enlace <a> para sacar su 'alt'
-                            const img = currSlideElement.querySelector('img');
-                            captionText = img ? img.getAttribute('alt') : '';
-                        }
-                        el.innerHTML = captionText ? `<div class="pswp-caption-content">${captionText}</div>` : '';
-                    });
-                }
-            });
-        });
-
-        // 2. SOLUCIÓN SALTO DE IMAGEN (Pre-carga inteligente)
-        // Detectamos tamaño ANTES de abrir si es posible
-        lightbox.addFilter('itemData', (itemData, index) => {
-            const img = itemData.element.querySelector('img');
-            // Si la imagen ya cargó en el navegador, usamos su tamaño natural
-            if (img && img.naturalWidth) {
-                itemData.width = img.naturalWidth;
-                itemData.height = img.naturalHeight;
-            }
-            return itemData;
-        });
-
-        // Respaldo: Si aún no carga, ajustamos al vuelo
-        lightbox.on('contentLoad', (e) => {
-            const { content } = e;
-            if (content.data.width) return;
-            const img = new Image();
-            img.src = content.data.src;
-            img.onload = () => {
-                content.data.width = img.width;
-                content.data.height = img.height;
-                lightbox.pswp.refreshSlideContent(content.index);
-            };
-        });
-
-        lightbox.init();
-    };
-
-    window.dispatchEvent(new Event('PhotoSwipeReady'));
-</script>
-
-
-
+<!-- Carga e Inicialización de PhotoSwipe + Plugin de Títulos -->    
+    <script type="module" src="photoswipe-init.js"></script>
+<!-- Código JavaScript personalizado -->
     <script src="script.js"></script>
 </body>
 </html>

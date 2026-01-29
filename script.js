@@ -25,58 +25,75 @@ for (let i = 1; i <= 14; i++) {
 }
 
 /* =========================================
-   FUNCIÓN DE PINTADO
+   FUNCIÓN DE PINTADO INTELIGENTE
    ========================================= */
 function pintarHTML(lista, contenedorID) {
     const contenedor = document.getElementById(contenedorID);
-    if (!contenedor) return; // Protección por si no existe el ID
+    
+    // Si no encuentra el contenedor, sale para no dar error
+    if (!contenedor) {
+        console.error("No se encontró el contenedor: " + contenedorID);
+        return; 
+    }
 
     lista.forEach(item => {
         const articulo = document.createElement('article');
         articulo.className = 'gallery-item';
 
-        // NOTA: Quitamos target="_blank" para evitar que abra pestaña nueva si falla el JS
-        // Ponemos dimensiones iniciales arbitrarias (800x800) para que PhotoSwipe arranque
-        // El script del HTML corregirá el tamaño real después.
+        // Preparamos el texto del título (Alt)
+        const altTexto = `${item.titulo} ${item.precio ? '- ' + item.precio : ''}`;
+        
+        // Creamos el HTML interno
         articulo.innerHTML = `
             <a href="${item.img}" 
                data-pswp-width="800" 
                data-pswp-height="800" 
                class="pswp-link">
-                <img src="${item.img}" 
-     alt="${item.titulo} ${item.precio ? ' - ' + item.precio : ''}" 
-     class="img-zoomable">
+                <img src="${item.img}" alt="${altTexto}" class="img-zoomable">
             </a>
             <h3>${item.titulo}</h3>
             <p>${item.desc || ''}</p>
             <span class="price">${item.precio}</span>
         `;
+        
         contenedor.appendChild(articulo);
+
+        // --- TRUCO DE PRE-CARGA (Solución al salto) ---
+        // Creamos una imagen virtual para leer el tamaño real en segundo plano
+        const imgVirtual = new Image();
+        imgVirtual.src = item.img;
+        
+        imgVirtual.onload = () => {
+            // Cuando cargue, actualizamos los datos del enlace <a>
+            const enlace = articulo.querySelector('a.pswp-link');
+            if(enlace) {
+                enlace.setAttribute('data-pswp-width', imgVirtual.width);
+                enlace.setAttribute('data-pswp-height', imgVirtual.height);
+            }
+        };
     });
 }
 
 // 1. Pintamos el HTML inmediatamente
+// Asegúrate de que estos IDs existan en tu index.html
 pintarHTML(productos, 'contenedor-monturas');
 pintarHTML(gafasSol, 'contenedor-gafas');
 
 /* =========================================
    INICIALIZACIÓN SEGURA DE PHOTOSWIPE
    ========================================= */
-// Esta función intenta iniciar las galerías
 function activarLibreria() {
+    // Si la función ya existe (porque el módulo cargó rápido), la usamos
     if (window.iniciarGaleria) {
         window.iniciarGaleria('contenedor-monturas');
         window.iniciarGaleria('contenedor-gafas');
-        console.log("PhotoSwipe iniciado correctamente");
     } else {
-        // Si la librería aún no carga, esperamos el evento
+        // Si no, esperamos a que el módulo avise que está listo
         window.addEventListener('PhotoSwipeReady', () => {
             window.iniciarGaleria('contenedor-monturas');
             window.iniciarGaleria('contenedor-gafas');
-            console.log("PhotoSwipe iniciado tras espera");
         });
     }
 }
 
 activarLibreria();
-
