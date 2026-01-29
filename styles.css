@@ -15,16 +15,19 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+
         body {
             line-height: 1.6;
             color: var(--texto-oscuro);
         }
+
 
         img {
             max-width: 100%;
             display: block;
             border-radius: 8px;
         }
+
 
         /* --- ENCABEZADO (HEADER) --- */
         header {
@@ -46,15 +49,17 @@
             margin-bottom: 1rem;     /* Espacio antes del menú */
         }
 
+
         /* Controla el tamaño del logo para que no se vea gigante */
         .logo-img {
             height: 50px; /* Ajusta este valor según el tamaño real de tu logo */
             width: auto;  /* Mantiene la proporción para no deformarlo */
         }
 
+
         /* Opcional: Quitar el margen del h2 para que quede bien alineado */
         .header-logo h2 {
-            margin: 0; 
+            margin: 0;
         }
         nav ul {
             list-style: none;
@@ -65,6 +70,7 @@
             flex-wrap: wrap;
             padding-bottom: 10px; /* Un poco de aire abajo */
         }
+
 
         nav a {
             color: var(--blanco);
@@ -78,6 +84,7 @@
             background-color: rgba(255,255,255,0.2);
         }
 
+
         /* --- SECCIONES COMUNES --- */
         section {
             padding: 3rem 1.5rem;
@@ -85,6 +92,7 @@
             margin: 0 auto;
             border-bottom: 1px solid #eee;
         }
+
 
         .section-title {
             text-align: center;
@@ -94,6 +102,7 @@
             text-transform: uppercase;
         }
 
+
         .section-subtitle {
             text-align: center;
             color: #666;
@@ -101,26 +110,29 @@
             font-style: italic;
         }
 
+
         /* --- PORTADA (HERO) --- */
         .hero {
             /* 1. Fondo con "capa oscura" encima de la imagen */
             /* El primer valor es un color negro semitransparente (0.9 de opacidad) */
-             background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3)), 
+             background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3)),
                       url('images/fachada1.png');
-    
+   
             /* IMPORTANTE: Cambia el color del texto a oscuro para que se lea */
             color: var(--color-principal); /* Tu azul petróleo corporativo */
+
 
             /* 2. Expansión inteligente de la imagen */
             background-size: cover;      /* Hace que la imagen cubra todo el espacio sin deformarse */
             background-position: center; /* Centra la imagen para que se vea lo importante */
             background-repeat: no-repeat; /* Evita que se repita como mosaico */
-            
+           
             /* 3. Ajustes de texto */
             text-align: center;
             padding: 6rem 1rem; /* Aumenté un poco el padding para que se vea más impactante */
            
         }
+
 
         .hero h1 {
             font-size: 2.5rem;
@@ -129,13 +141,14 @@
             color: var(--color-principal);
         }
 
+
         .btn {
             /* Mantenemos tus estilos base */
             display: inline-flex; /* CAMBIO IMPORTANTE: inline-flex ayuda a alinear icono y texto */
             align-items: center;  /* Centra verticalmente icono y texto */
             justify-content: center;
             gap: 10px;            /* Espacio entre el icono y el texto */
-            
+           
             background-color: var(--color-principal);
             color: var(--blanco);
             padding: 10px 20px;
@@ -148,20 +161,22 @@
             transition: all 0.3s ease; /* Suaviza todas las animaciones */
         }
 
+
         .btn:hover {
-            background-color: #66E23C; 
+            background-color: #66E23C;
             transform: scale(1.05); /* Crece un 5% al pasar el mouse */
             box-shadow: 0 6px 8px rgba(0,0,0,0.3); /* La sombra crece */
         }
         /* Estilos para el icono SVG */
         .btn-icon {
             width: 24px;  /* Aumenté un poco el tamaño para que respire mejor */
-            height: 24px; 
+            height: 24px;
             fill: currentColor; /* Esto hace que el icono tome el color del texto (blanco) */
         }
 
+
         .section-servicios {            
-            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3)), 
+            background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3)),
                       url('images/Optometria.png');
             background-size: cover;      /* Hace que la imagen cubra todo el espacio sin deformarse */
             background-position: center; /* Centra la imagen para que se vea lo importante */
@@ -176,65 +191,71 @@
             margin-top: 5px;
         }
 
+
         /* --- SECCIÓN DE VIDEO --- */
         .section-video {
             background-color: #fff; /* Fondo limpio */
             text-align: center;
         }
 
+
         .video-container {
-            /* CAMBIO CLAVE: Reduje el ancho máximo. 
+            /* CAMBIO CLAVE: Reduje el ancho máximo.
             400px o 500px es ideal para un video vertical (tipo TikTok/Reel) en PC.
             Si el video es horizontal (tipo YouTube), usa 600px o 700px. */
-            max-width: 450px;       
-            
-            margin: 0 auto;         
+            max-width: 450px;      
+           
+            margin: 0 auto;        
             padding: 10px;
-            background: #000;       
+            background: #000;      
             border-radius: 15px;    
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3); 
-            overflow: hidden;       
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            overflow: hidden;      
         }
+
 
         video {
             width: 100%;            /* Se adapta al ancho del contenedor */
             height: auto;           /* ¡IMPORTANTE! 'auto' calcula la altura según el video original */
-            display: block;         
+            display: block;        
             border-radius: 10px;    
         }
+
 
         /* Ajuste para celulares */
         @media (max-width: 768px) {
             .video-container {
                 /* En celular queremos que aproveche más espacio */
-                max-width: 90%; 
+                max-width: 90%;
             }
         }
+
 
         /* --- CARRUSEL LATERAL (galería de productos) --- */
         .gallery-container {
             /* Habilita el scroll horizontal */
             display: flex;
-            overflow-x: auto; 
+            overflow-x: auto;
             gap: 20px;
             padding-bottom: 20px;
-            
+           
             /* Efecto imán para que las fotos se centren solas */
-            scroll-snap-type: x mandatory; 
-            
+            scroll-snap-type: x mandatory;
+           
             /* Oculta la barra de scroll fea en algunos navegadores */
             scrollbar-width: thin;
         }
 
+
         .gallery-item {
             /* --- PROPIEDADES DE POSICIÓN (Estas ya las tenías) --- */
-            flex: 0 0 80%; 
-            scroll-snap-align: center; 
+            flex: 0 0 80%;
+            scroll-snap-align: center;
             background: #f9f9f9;
             padding: 15px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            
+           
             /* --- LO NUEVO: TRUCO PARA CENTRAR TODO PERFECTAMENTE --- */
             display: flex;             /* Activa el modo flexible */
             flex-direction: column;    /* Ordena los elementos uno debajo de otro (columna) */
@@ -244,12 +265,14 @@
         }
 
 
+
         /* Ajuste para pantallas grandes (PC) */
         @media (min-width: 768px) {
             .gallery-item {
                 flex: 0 0 30%; /* En PC caben 3 a la vez */
             }
         }
+
 
         .price {
             display: block;
@@ -258,6 +281,7 @@
             font-weight: bold;
             margin-top: 10px;
         }
+
 
         /* --- CONTACTO / FOOTER --- */
         footer {
@@ -283,6 +307,7 @@
             border-radius: 10px; /* Bordes redondeados para que combine con el diseño */
         }
 
+
         /* --- REDES SOCIALES (FOOTER) --- */
         .social-links {
             display: flex;
@@ -291,12 +316,14 @@
             margin-bottom: 20px;  /* Espacio antes del copyright */
         }
 
+
         .social-links a {
             display: inline-block;
             width: 40px;          /* Tamaño del círculo/area clickeable */
             height: 40px;
             transition: transform 0.3s ease; /* Animación suave al pasar mouse */
         }
+
 
         .social-links svg {
             width: 100%;
@@ -305,100 +332,73 @@
             transition: fill 0.3s ease;
         }
 
+
         /* Efecto Hover: Se levantan un poco y cambian de color */
         .social-links a:hover {
             transform: translateY(-5px);
         }
 
+
         .social-links a:hover svg {
             fill: var(--color-secundario); /* Cambian al color menta al pasar el mouse */
         }
-/* --- ESTILOS DEL LIGHTBOX (Visor) --- */
-        .lightbox {
-            display: none; /* Oculto por defecto */
-            position: fixed;
-            z-index: 1000; /* Encima de todo */
-            left: 0;
-            top: 0;
+/* --- ESTILOS PARA PHOTOSWIPE --- */        
+        /* Asegura que el enlace no tenga estilos raros */
+        .pswp-link {
+            display: block;
+            cursor: zoom-in;
+        }
+        .pswp-link img {
             width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9); /* Fondo negro casi opaco */
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+            height: auto;
+            display: block;
         }
-
-        /* Cuando le ponemos la clase 'active', se muestra */
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox-img {
+        /* Estilos para el título dentro de PhotoSwipe */
+        .pswp-caption-content {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 16px;
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 20px;
+            width: auto;
             max-width: 90%;
-            max-height: 80%;
-            border-radius: 5px;
-            box-shadow: 0 0 20px rgba(255,255,255,0.2);
-            animation: zoomIn 0.3s ease; /* Pequeña animación al abrir */
+            pointer-events: none;
+        }
+        /* Forzar flechas de PhotoSwipe a los bordes de la PANTALLA */
+        .pswp__button--arrow--prev {
+            left: 20px !important; /* Pegado a la izquierda de la pantalla */
+            right: auto !important;
         }
 
-        .lightbox-caption {
-            color: white;
-            margin-top: 15px;
-            font-size: 1.2rem;
-            font-weight: bold;
+
+        .pswp__button--arrow--next {
+            right: 20px !important; /* Pegado a la derecha de la pantalla */
+            left: auto !important;
         }
 
-        /* Botón de cerrar (X) */
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
+        /* Opcional: Asegurar que estén centradas verticalmente */
+        .pswp__button--arrow--prev,
+        .pswp__button--arrow--next {
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            margin-top: 0 !important;
+            position: fixed !important; /* Importante para que sea relativo a la ventana */
         }
-
-        .close-btn:hover {
-            color: var(--color-secundario);
+        /* Forzar la "X" de cerrar a la esquina de la pantalla */
+        .pswp__button--close {
+            position: fixed !important; /* Relativo a la ventana */
+            top: 15px !important;       /* Separación desde arriba */
+            right: 20px !important;     /* Separación desde la derecha */
+            margin: 0 !important;       /* Quitar márgenes raros */
+            z-index: 10500 !important;  /* Asegurar que esté encima de todo */
+           
+            /* Opcional: Hacerla un poquito más grande/visible  */
+            background-color: rgba(0, 0, 0, 0.3) !important; /* Fondo oscurito suave */
+            border-radius: 50%; /* Redonda */
         }
-
-        /* Animación de zoom */
-        @keyframes zoomIn {
-            from {transform: scale(0.8); opacity: 0;}
-            to {transform: scale(1); opacity: 1;}
-        }
-        /* Estilos para los botones de navegación */
-        .nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.1);
-            color: #66E23C;
-            border: none;
-            font-size: 3rem;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: 0.3s;
-            border-radius: 5px;
-            z-index: 1001;
-            user-select: none; /* Para que no se seleccione el texto al dar click rápido */
-        }
-
-        .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .prev-btn { left: 20px; }
-        .next-btn { right: 20px; }
-
-        /* En celular, hacemos las flechas más pequeñas */
-        @media (max-width: 768px) {
-            .nav-btn {
-                font-size: 2rem;
-                padding: 10px;
-                background: transparent; /* Fondo transparente en celular para no tapar */
-            }
-        }
-
+    /* End of styles.css */
