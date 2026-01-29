@@ -369,3 +369,36 @@
             from {transform: scale(0.8); opacity: 0;}
             to {transform: scale(1); opacity: 1;}
         }
+        /* Estilos para los botones de navegación */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            font-size: 3rem;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: 0.3s;
+            border-radius: 5px;
+            z-index: 1001;
+            user-select: none; /* Para que no se seleccione el texto al dar click rápido */
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .prev-btn { left: 20px; }
+        .next-btn { right: 20px; }
+
+        /* En celular, hacemos las flechas más pequeñas */
+        @media (max-width: 768px) {
+            .nav-btn {
+                font-size: 2rem;
+                padding: 10px;
+                background: transparent; /* Fondo transparente en celular para no tapar */
+            }
+        }
+

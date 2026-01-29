@@ -1,108 +1,164 @@
-// LISTA DE PRODUCTOS 
+/* =========================================
+   DATOS Y CONFIGURACIÓN
+   ========================================= */
+
+// --- VARIABLES GLOBALES DEL LIGHTBOX ---
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxCaption = document.getElementById('lightbox-caption');
+const closeBtn = document.querySelector('.close-btn');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+
+// Estas variables controlarán la navegación
+let indiceActual = 0; 
+let galeriaActual = []; // Aquí guardaremos la lista de fotos que se está viendo (Monturas o Gafas)
+
+/* =========================================
+   SECCIÓN 1: MONTURAS
+   ========================================= */
 const productos = [];
-const precios = ['$110.000', '$120.000', '$130.000', '$300.000', '$350.000', '$400.000', '$450.000', '$500.000', '$550.000', '$600.000']
-const titulos = ['Clasica', 'Vintage', 'Antigua', 'Old School', 'Retro', 'Nostalgia', 'Época', 'Pasado', 'Histórica', 'Legendaria']
-// Referencias al Lightbox y sus elementos
-const lightbox = document.getElementById('lightbox');// Referencia al lightbox
-const lightboxImg = document.getElementById('lightbox-img');// Referencia a la imagen del lightbox
-const lightboxCaption = document.getElementById('lightbox-caption');// Referencia al título del lightbox
-const closeBtn = document.querySelector('.close-btn');// Referencia al botón de cerrar
-// CÓDIGO PARA GENERAR LOS PRODUCTOS "RETRO" AUTOMÁTICAMENTE
-// (Esto es un truco para no escribir los 10 a mano ahora mismo, 
-// pero en la vida real borrarías esto y llenarías la lista de arriba)
+// Precios y títulos base (puedes editarlos)
+const preciosMonturas = ['$110.000', '$120.000', '$130.000', '$300.000', '$350.000']; 
+
+// Generación automática de 50 monturas
 for (let i = 1; i <= 50; i++) {
     productos.push({
         img: `images/monturas/Montura${i}.png`,
-        titulo: 'Montura' + ' ' + i,
+        titulo: 'Montura ' + i,
         desc: '',        
-        precio: ''
+        precio: '' // Dejo vacío como pediste, o puedes usar preciosMonturas[(i-1)%preciosMonturas.length]
     });
 }
 
-// LÓGICA PARA "PINTAR" EL HTML
-const contenedor = document.getElementById('contenedor-monturas');
+// Pintar Monturas
+const contenedorMonturas = document.getElementById('contenedor-monturas');
 
-productos.forEach(producto => {
-    // Creamos el artículo
+productos.forEach((producto, index) => {
     const articulo = document.createElement('article');
     articulo.className = 'gallery-item';
 
-    // Llenamos el contenido HTML usando los datos del producto
     articulo.innerHTML = `
-        <img src="${producto.img}" alt="${producto.titulo}">
+        <img src="${producto.img}" alt="${producto.titulo}" class="img-zoomable">
         <h3>${producto.titulo}</h3>
         <p>${producto.desc}</p>
         <span class="price">${producto.precio}</span>
     `;
-// --- ESTO ES LO NUEVO: AGREGAR EL CLICK ---
-    // Buscamos la imagen que acabamos de crear dentro del artículo
+
+    // Evento Click: Abre el Lightbox usando la lista de MONTURAS
     const imagen = articulo.querySelector('img');
-    
-    // Le decimos: "Cuando te hagan click..."
     imagen.addEventListener('click', () => {
-        lightbox.classList.add('active'); // Muestra el lightbox
-        lightboxImg.src = producto.img;   // Pone la foto grande
-        lightboxCaption.textContent = producto.titulo + " - " + producto.precio; // Pone el título
+        galeriaActual = productos; // ¡Importante! Decimos que estamos viendo monturas
+        indiceActual = index;
+        abrirLightbox();
     });
-    // Lo agregamos al contenedor
-    contenedor.appendChild(articulo);
-});
-// --- LÓGICA PARA CERRAR EL LIGHTBOX ---
 
-// 1. Al dar click en la X
-closeBtn.addEventListener('click', () => {
-    lightbox.classList.remove('active');
+    contenedorMonturas.appendChild(articulo);
 });
 
-// 2. Al dar click fuera de la imagen (en lo negro)
-lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-        lightbox.classList.remove('active');
-    }
-});
-const A='Oakley';
-const B='Ray-Ban';
-const gafasSol =[];
-const preciosGafas = ['$930.000', '$930.000', '$980.000', '$990.000', '$1.070.000', '$1.100.000', '$1.100.000', '$520.000', '$570.000', '$620.000']
+/* =========================================
+   SECCIÓN 2: GAFAS DE SOL
+   ========================================= */
+const A = 'Oakley';
+const B = 'Ray-Ban';
+const gafasSol = [];
 const titulosGafas = [A, A, A, A, B, B, B, A, A, A, A, A, A, A];
+const preciosGafas = ['$930.000', '$930.000', '$980.000']; // Ejemplo
 
-// CÓDIGO PARA GENERAR LOS OTROS 6 PRODUCTOS "SOLARES" AUTOMÁTICAMENTE
-// (Esto es un truco para no escribir los 10 a mano ahora mismo, 
-// pero en la vida real borrarías esto y llenarías la lista de arriba)
+// Generación automática de 14 gafas
 for (let i = 1; i <= 14; i++) {
     gafasSol.push({
         img: `images/gafasDeSol/gafas${i}.png`,
-        titulo: titulosGafas[i - 1],
+        titulo: titulosGafas[i - 1] || 'Gafa de Sol', // Usa el título o un genérico si no hay
         desc: '',
         precio: ''
     });
 }
 
-// LÓGICA PARA "PINTAR" EL HTML
+// Pintar Gafas de Sol
 const contenedorGafas = document.getElementById('contenedor-gafas');
 
-gafasSol.forEach(gafa => {
-    // Creamos el artículo
+gafasSol.forEach((gafa, index) => {
     const articulo = document.createElement('article');
     articulo.className = 'gallery-item';
+    
     const htmlDescripcion = gafa.desc ? `<p>${gafa.desc}</p>` : '';
-    // Llenamos el contenido HTML usando los datos de la gafa
+
     articulo.innerHTML = `
-        <img src="${gafa.img}" alt="${gafa.titulo}">
+        <img src="${gafa.img}" alt="${gafa.titulo}" class="img-zoomable">
         <h3>${gafa.titulo}</h3>
         ${htmlDescripcion}
         <span class="price">${gafa.precio}</span>
     `;
-// --- ESTO ES LO NUEVO: AGREGAR EL CLICK ---
-    // Buscamos la imagen que acabamos de crear dentro del artículo
+
+    // Evento Click: Abre el Lightbox usando la lista de GAFAS DE SOL
     const imagen = articulo.querySelector('img');
-    
-    // Le decimos: "Cuando te hagan click..."
     imagen.addEventListener('click', () => {
-        lightbox.classList.add('active'); // Muestra el lightbox
-        lightboxImg.src = gafa.img;   // Pone la foto grande
-        lightboxCaption.textContent = gafa.titulo + " - " + gafa.precio; // Pone el título
+        galeriaActual = gafasSol; // ¡Importante! Decimos que estamos viendo gafas
+        indiceActual = index;
+        abrirLightbox();
     });
-    // Lo agregamos al contenedor
+
     contenedorGafas.appendChild(articulo);
+});
+
+/* =========================================
+   LÓGICA UNIFICADA DEL LIGHTBOX
+   ========================================= */
+
+function abrirLightbox() {
+    lightbox.classList.add('active');
+    actualizarImagen();
+}
+
+function actualizarImagen() {
+    // Usamos 'galeriaActual' para saber qué foto mostrar
+    const item = galeriaActual[indiceActual];
+    
+    lightboxImg.src = item.img;
+    // Muestra Título - Precio (o solo título si no hay precio)
+    const textoPrecio = item.precio ? ` - ${item.precio}` : '';
+    lightboxCaption.textContent = item.titulo + textoPrecio;
+}
+
+function cambiarImagen(direccion) {
+    indiceActual += direccion;
+
+    // Ciclo Infinito: Si se pasa del final, vuelve al inicio
+    if (indiceActual >= galeriaActual.length) {
+        indiceActual = 0;
+    }
+    // Si se va antes del inicio, va al final
+    if (indiceActual < 0) {
+        indiceActual = galeriaActual.length - 1;
+    }
+
+    actualizarImagen();
+}
+
+// --- EVENTOS DE LOS BOTONES ---
+
+// Botones Siguiente / Anterior
+nextBtn.addEventListener('click', () => cambiarImagen(1));
+prevBtn.addEventListener('click', () => cambiarImagen(-1));
+
+// Cerrar con X
+closeBtn.addEventListener('click', () => {
+    lightbox.classList.remove('active');
+});
+
+// Cerrar clickeando fuera
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+        lightbox.classList.remove('active');
+    }
+});
+
+// Teclado (Flechas y Escape)
+document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('active')) return;
+    
+    if (e.key === 'ArrowRight') cambiarImagen(1);
+    if (e.key === 'ArrowLeft') cambiarImagen(-1);
+    if (e.key === 'Escape') lightbox.classList.remove('active');
 });
