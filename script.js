@@ -1,23 +1,20 @@
-// LISTA DE PRODUCTOS (Aquí puedes agregar o quitar los que quieras)
+// LISTA DE PRODUCTOS 
 const productos = [];
 const precios = ['$110.000', '$120.000', '$130.000', '$300.000', '$350.000', '$400.000', '$450.000', '$500.000', '$550.000', '$600.000']
 const titulos = ['Clasica', 'Vintage', 'Antigua', 'Old School', 'Retro', 'Nostalgia', 'Época', 'Pasado', 'Histórica', 'Legendaria']
-// Referencias al Lightbox (Agrega esto al inicio de tu JS)
-const lightbox = document.getElementById('lightbox');
-const lightboxImg = document.getElementById('lightbox-img');
-const lightboxCaption = document.getElementById('lightbox-caption');
-const closeBtn = document.querySelector('.close-btn');
-// CÓDIGO PARA GENERAR LOS OTROS 6 PRODUCTOS "RETRO" AUTOMÁTICAMENTE
+// Referencias al Lightbox y sus elementos
+const lightbox = document.getElementById('lightbox');// Referencia al lightbox
+const lightboxImg = document.getElementById('lightbox-img');// Referencia a la imagen del lightbox
+const lightboxCaption = document.getElementById('lightbox-caption');// Referencia al título del lightbox
+const closeBtn = document.querySelector('.close-btn');// Referencia al botón de cerrar
+// CÓDIGO PARA GENERAR LOS PRODUCTOS "RETRO" AUTOMÁTICAMENTE
 // (Esto es un truco para no escribir los 10 a mano ahora mismo, 
 // pero en la vida real borrarías esto y llenarías la lista de arriba)
 for (let i = 1; i <= 50; i++) {
     productos.push({
         img: `images/monturas/Montura${i}.png`,
         titulo: 'Montura' + ' ' + i,
-        desc: '',
-        // AQUÍ ESTÁ EL TRUCO:
-        // (i - 1) convierte el contador a base cero (0, 1, 2...)
-        // % precios.length hace que cuando llegue a 10, el residuo vuelva a ser 0
+        desc: '',        
         precio: ''
     });
 }
@@ -96,7 +93,16 @@ gafasSol.forEach(gafa => {
         ${htmlDescripcion}
         <span class="price">${gafa.precio}</span>
     `;
-
+// --- ESTO ES LO NUEVO: AGREGAR EL CLICK ---
+    // Buscamos la imagen que acabamos de crear dentro del artículo
+    const imagen = articulo.querySelector('img');
+    
+    // Le decimos: "Cuando te hagan click..."
+    imagen.addEventListener('click', () => {
+        lightbox.classList.add('active'); // Muestra el lightbox
+        lightboxImg.src = gafa.img;   // Pone la foto grande
+        lightboxCaption.textContent = gafa.titulo + " - " + gafa.precio; // Pone el título
+    });
     // Lo agregamos al contenedor
     contenedorGafas.appendChild(articulo);
 });
