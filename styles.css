@@ -4,6 +4,7 @@
             --color-secundario: #94d2bd; /* Verde menta suave */
             --texto-oscuro: #333;
             --blanco: #ffffff;
+            --link: blueviolet;
         }
         .bg-gris {
             background-color: #f4f4f4;
@@ -149,7 +150,7 @@
             justify-content: center;
             gap: 10px;            /* Espacio entre el icono y el texto */
            
-            background-color: var(--color-principal);
+            background-color: #66E23C;
             color: var(--blanco);
             padding: 10px 20px;
             text-decoration: none;
@@ -163,7 +164,7 @@
 
 
         .btn:hover {
-            background-color: #66E23C;
+            background-color: var(--link);
             transform: scale(1.05); /* Crece un 5% al pasar el mouse */
             box-shadow: 0 6px 8px rgba(0,0,0,0.3); /* La sombra crece */
         }
